@@ -1,0 +1,24 @@
+#!/usr/bin/env zsh
+
+R=`pwd`
+H=`pwd`
+E=`pwd`
+
+source config
+
+pushd ../libdevuansdk
+source   libdevuansdk
+popd
+
+
+# example workflow:
+
+# 1st stage
+#bootstrap amd64
+#kernel_x86_install_default
+
+# 2nd stage
+#install opennebula.deb
+
+# 3rd stage
+#qemu_make_img
