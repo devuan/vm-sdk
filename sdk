@@ -50,16 +50,6 @@ load() {
 	req=(os)
 	ckreq || return 1
 
-	## initialize binfmt_misc if not already, needed to run qemu
-	#if [[ -f /etc/init.d/binfmt-support ]]; then
-	#	sudo /etc/init.d/binfmt-support restart
-	#else
-	#	[[ -d /proc/sys/fs/binfmt_misc ]] \
-	#		|| sudo modprobe binfmt_misc
-	#	[[ -f /proc/sys/fs/binfmt_misc/register ]] \
-	#		|| sudo mount binfmt_misc -t binfmt_misc /proc/sys/fs/binfmt_misc
-	#fi
-
 	os_map=(
 		"devuan"     "$R/lib/libdevuansdk/libdevuansdk"
 	)

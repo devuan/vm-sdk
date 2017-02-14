@@ -32,4 +32,5 @@ MAKEOPTS="-j$(expr $(grep -c 'processor' /proc/cpuinfo) + 1)"
 ## extra_packages for all images
 extra_packages+=(fake-hwclock busybox-syslogd busybox-static openntpd)
 extra_packages+=(fbterm)
+
 purge_packages+=(rsyslog)
