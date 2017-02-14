@@ -39,7 +39,6 @@ arrs+=(extra_packages)
 maps+=(board_map os_map blend_map)
 
 source $R/config
-source $R/lib/helpers
 
 ## conclude zuper initialization
 source $R/lib/zuper/zuper.init

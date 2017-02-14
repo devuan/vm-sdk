@@ -24,6 +24,8 @@
 arch=amd64
 size=1891
 
+PATH="$PATH:/usr/sbin:/sbin"
+
 ## options for `make` when building kernel
 MAKEOPTS="-j$(expr $(grep -c 'processor' /proc/cpuinfo) + 1)"
 
