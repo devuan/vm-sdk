@@ -1,3 +1,4 @@
 [submodule "lib/libdevuansdk"]
 	path = lib/libdevuansdk
-	url = https://git.devuan.org/sdk/libdevuansdk.git
+	url = git@git.devuan.org:sdk/libdevuansdk.git
+

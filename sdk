@@ -47,9 +47,8 @@ source $R/lib/zuper/zuper.init
 load() {
 	fn load "$@"
 	os="$1"
-	dev="$2"
-	blend="$3"
-	req=(os dev)
+	blend="$2"
+	req=(os)
 	ckreq || return 1
 
 	## initialize binfmt_misc if not already, needed to run qemu
