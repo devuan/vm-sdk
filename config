@@ -22,7 +22,7 @@
 ## ---------------------
 
 arch=amd64
-size=1891
+size=20479
 
 PATH="$PATH:/usr/sbin:/sbin"
 
