@@ -11,7 +11,7 @@ It requires the following packages to be installed in addition to the
 dependencies required for `libdevuansdk`.
 
 ```
-virtualbox vagrant qemu
+virtualbox vagrant qemu qemu-utils
 ```
 
 ## Initial setup
