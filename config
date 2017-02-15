@@ -23,6 +23,8 @@
 
 arch=amd64
 size=20479
+imageformat=qcow2
+#imageformat=raw
 
 PATH="$PATH:/usr/sbin:/sbin"
 
