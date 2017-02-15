@@ -22,6 +22,14 @@ After cloning the vm-sdk git repository, enter it and issue:
 git submodule update --init
 ```
 
+### Updating
+
+To update vm-sdk, go to the root dir of the git repo and issue:
+
+```
+git pull && git submodule update --init --recursive
+```
+
 ## Quick start
 
 Edit the `config` file to match your needs. Sensible defaults are
