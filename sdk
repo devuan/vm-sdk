@@ -54,6 +54,10 @@ load() {
 		"devuan"     "$R/lib/libdevuansdk/libdevuansdk"
 	)
 
+	blend_map=(
+		"decode" "$R/../decode.blend"
+	)
+
 	oslib="${os_map[$os]}"
 	blendlib="${blend_map[$blend]}"
 
