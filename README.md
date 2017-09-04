@@ -12,8 +12,15 @@ It requires the following packages to be installed in addition to the
 
 `sudo` permissions are required for the user that is running the build.
 
+### Devuan
+
 ```
 virtualbox vagrant qemu qemu-utils
+```
+
+### Gentoo
+```
+app-emulation/virtualbox app-emulation/vagrant app-emulation/qemu
 ```
 
 ## Initial setup
