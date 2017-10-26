@@ -31,8 +31,9 @@ PATH="$PATH:/usr/sbin:/sbin"
 ## options for `make` when building kernel
 MAKEOPTS="-j$(expr $(grep -c 'processor' /proc/cpuinfo) + 1)"
 
-## extra_packages for all images
-extra_packages+=(fake-hwclock busybox-syslogd busybox-static openntpd)
-extra_packages+=(fbterm)
+## uncomment if you wish to create stage4 tarballs for faster rebuilding
+# TAR_STAGE4=true
 
-purge_packages+=(rsyslog)
+## extra_packages for all images
+extra_packages+=(fake-hwclock busybox-static ntp)
+extra_packages+=(fbterm)
