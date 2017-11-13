@@ -17,6 +17,10 @@ It requires the following packages to be installed in addition to the
 ```
 virtualbox vagrant qemu qemu-utils
 ```
+* http://download.virtualbox.org/virtualbox/5.2.0/virtualbox-5.2_5.2.0-118431~Debian~jessie_amd64.deb
+* http://download.virtualbox.org/virtualbox/5.2.0/virtualbox-5.2_5.2.0-118431~Debian~stretch_amd64.deb
+
+* https://releases.hashicorp.com/vagrant/2.0.0/vagrant_2.0.0_x86_64.deb
 
 ### Gentoo
 ```
