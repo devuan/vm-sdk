@@ -94,4 +94,4 @@ load() {
 TRAPZERR() { zerr; return $? }
 
 notice "vm-sdk loaded"
-export PROMPT="%F{yellow}%(?..%? )%{$reset_color%}vmsdk@%{$fg[red]%}%m %{$reset_color%}%3c %#"
+export PROMPT="%F{yellow}%(?..%? )%{$reset_color%}vmsdk@%{$fg[red]%}%m %{$reset_color%}%3c %# "
