@@ -1,5 +1,5 @@
 #!/usr/bin/env zsh
-# Copyright (c) 2016-2017 Dyne.org Foundation
+# Copyright (c) 2016-2018 Dyne.org Foundation
 # vm-sdk is written and maintained by Ivan J. <parazyd@dyne.org>
 #
 # This file is part of vm-sdk
@@ -56,6 +56,7 @@ load() {
 
 	blend_map=(
 		"decode" "$R/../decode.blend"
+		"maemo"  "$R/../maemo.blend"
 	)
 
 	oslib="${os_map[$os]}"
@@ -70,9 +71,10 @@ load() {
 	}
 
 	[[ -f $oslib    ]] || { die "no valid distro specified"; exit 1 }
-	[[ -f $blendlib ]] || { warn "no valid blend specified" }
+	[[ -f $blendlib ]] || { act "no valid blend specified" }
 
 	source $oslib
+
 	[[ -f $blendlib ]] && {
 		source $blendlib || zerr
 		act "$os blend loaded"
