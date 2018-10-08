@@ -34,6 +34,10 @@ MAKEOPTS="-j$(expr $(grep -c 'processor' /proc/cpuinfo) + 1)"
 ## uncomment if you wish to create stage4 tarballs for faster rebuilding
 # TAR_STAGE4=true
 
+## Comment out if you don't want to create a cloud-based qcow.
+vars+=(makecloud)
+makecloud=true
+
 ## extra_packages for all images
 extra_packages+=(fake-hwclock busybox-static ntp)
 extra_packages+=(fbterm)
