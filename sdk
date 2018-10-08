@@ -73,7 +73,7 @@ load() {
 			sed 1q "$dlpath" | grep -q '^#!/usr/bin/env zsh' && blendlib="$dlpath"
 		fi
 
-		if [[ -z "$blendlib" ]]; then
+		if [[ -z "$blendlib" ]] && [[ -n "$blend" ]]; then
 			[[ -n "$dlpath" ]] && blend="$dlpath"
 			act "trying to parse an unknown blend"
 			# Check if it's a Dockerfile
