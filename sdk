@@ -65,7 +65,7 @@ load() {
 
 	blendlib="${blend_map[$blend]}"
 
-	if [[ -z "$blendlib" ]]; then
+	if [[ -z "$blendlib" ]] && [[ -n "$blend" ]]; then
 		if [[ "$blend" =~ '^http' ]]; then
 			notice "grabbing blend from the internetz"
 			dlpath="$R/extra/blends/$(basename $blend)"
