@@ -57,6 +57,7 @@ load() {
 	blend_map=(
 		"decode" "$R/../decode.blend"
 		"maemo"  "$R/../maemo.blend"
+		"cobox"  "$R/../cobox.blend"
 	)
 
 	oslib="${os_map[$os]}"
