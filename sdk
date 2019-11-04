@@ -58,6 +58,7 @@ load() {
 		"decode" "$R/../decode.blend"
 		"maemo"  "$R/../maemo.blend"
 		"cobox"  "$R/../cobox.blend"
+		"sdkvm"  "$R/../sdkvm.blend"
 	)
 
 	oslib="${os_map[$os]}"
