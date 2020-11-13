@@ -1,4 +1,5 @@
 #!/usr/bin/env zsh
+# shellcheck shell=bash
 # Copyright (c) 2016-2020 Dyne.org Foundation
 # vm-sdk is written and maintained by Ivan J. <parazyd@dyne.org>
 #
@@ -62,15 +63,15 @@ load() {
 	)
 
 	oslib="${os_map[$os]}"
-	[[ -f $oslib ]] || { die "no valid distro specified"; exit 1 }
-	source $oslib
+	[[ -f "$oslib" ]] || { die "No valid distro specified"; return 1; }
+	source "$oslib"
 
 	blendlib="${blend_map[$blend]}"
 
-	[[ -f $blendlib ]] || { act "no blend specified" }
-	[[ -f $blendlib ]] && {
-		source $blendlib || zerr
-		act "$(basename $blend) blend loaded"
+	[[ -f "$blendlib" ]] || act "No blend specified"
+	[[ -f "$blendlib" ]] && {
+		source "$blendlib" || { zerr; return 1; }
+		act "$(basename "$blend") blend loaded"
 		export BLEND=1
 	}
 
