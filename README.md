@@ -1,5 +1,5 @@
 vm-sdk
-=======
+======
 
 vm-sdk is simple distro build system aimed at creating Vagrant boxes
 and other virtual machines.
@@ -15,16 +15,13 @@ It requires the following packages to be installed in addition to the
 ### Devuan
 
 ```
-virtualbox vagrant qemu qemu-utils
-```
-* http://download.virtualbox.org/virtualbox/5.1.30/virtualbox-5.1_5.1.30-118389~Debian~stretch_amd64.deb
-* http://download.virtualbox.org/virtualbox/5.1.30/virtualbox-5.1_5.1.30-118389~Debian~jessie_amd64.deb
+qemu qemu-utils
 
-* https://releases.hashicorp.com/vagrant/2.0.0/vagrant_2.0.0_x86_64.deb
 
 ### Gentoo
+
 ```
-app-emulation/virtualbox app-emulation/vagrant app-emulation/qemu
+app-emulation/qemu
 ```
 
 ## Initial setup
@@ -68,37 +65,8 @@ to build the image for.
 Once initialized, you can run the helper command:
 
 ```
-; build_vagrant_dist
+; build_vm_dist
 ```
 
 The image will automatically be build for you. Once finished, you will be
 able to find it in the `dist/` directory in vm-sdk's root.
-
-For more info, see the `doc/` directory.
-
-## Acknowledgments
-
-Devuan's SDK was originally conceived during a period of residency at the
-Schumacher college in Dartington, UK. Greatly inspired by the laborious and
-mindful atmosphere of its wonderful premises.
-
-The Devuan SDK is Copyright (c) 2015-2017 by the Dyne.org Foundation
-
-Devuan SDK components were designed, and are written and maintained by:
-
-- Ivan J. <parazyd@dyne.org>
-- Denis Roio <jaromil@dyne.org>
-- Enzo Nicosia <katolaz@freaknet.org>
-
-This source code is free software: you can redistribute it and/or modify it
-under the terms of the GNU General Public License as published by the Free
-Software Foundation, either version 3 of the License, or (at your option)
-any later version.
-
-This software is distributed in the hope that it will be useful, but
-WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
-or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
-more details.
-
-You should have received a copy of the GNU General Public License along
-with this source code. If not, see <http://www.gnu.org/licenses/>.

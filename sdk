@@ -1,5 +1,5 @@
 #!/usr/bin/env zsh
-# Copyright (c) 2016-2018 Dyne.org Foundation
+# Copyright (c) 2016-2020 Dyne.org Foundation
 # vm-sdk is written and maintained by Ivan J. <parazyd@dyne.org>
 #
 # This file is part of vm-sdk
@@ -17,31 +17,31 @@
 # You should have received a copy of the GNU General Public License
 # along with this source code. If not, see <http://www.gnu.org/licenses/>.
 
-vmsdk_version="0.2"
+vmsdk_version="1.0"
 
-R=${VM_SDK:-$PWD}
+R="${VM_SDK:-$PWD}"
 
 DEBUG=0
 QUIET=0
 
-source $R/lib/zuper/zuper
+source "$R/lib/zuper/zuper"
 
-## global vars
+# Global vars
 vars+=(vmsdk_version)
 vars+=(R workdir strapdir)
 vars+=(os oslib blendlib)
 vars+=(MAKEOPTS)
 
-## global arrs
+# Global arrs
 arrs+=(extra_packages)
 
-## global maps
+# Global maps
 maps+=(board_map os_map blend_map)
 
-source $R/config
+source "$R/config"
 
-## conclude zuper initialization
-source $R/lib/zuper/zuper.init
+# Conclude zuper initialization
+source "$R/lib/zuper/zuper.init"
 
 load() {
 	fn load "$@"
@@ -51,7 +51,7 @@ load() {
 	ckreq || return 1
 
 	os_map=(
-		"devuan"     "$R/lib/libdevuansdk/libdevuansdk"
+		"devuan" "$R/lib/libdevuansdk/libdevuansdk"
 	)
 
 	blend_map=(
@@ -62,48 +62,10 @@ load() {
 	)
 
 	oslib="${os_map[$os]}"
-	[[ -f $oslib    ]] || { die "no valid distro specified"; exit 1 }
+	[[ -f $oslib ]] || { die "no valid distro specified"; exit 1 }
 	source $oslib
 
 	blendlib="${blend_map[$blend]}"
-
-	if [[ -z "$blendlib" ]] && [[ -n "$blend" ]]; then
-		if [[ "$blend" =~ '^http' ]]; then
-			notice "grabbing blend from the internetz"
-			dlpath="$R/extra/blends/$(basename $blend)"
-			wget -O "$dlpath" "$blend"
-			sed 1q "$dlpath" | grep -q '^#!/usr/bin/env zsh' && blendlib="$dlpath"
-		fi
-
-		if [[ -z "$blendlib" ]] && [[ -n "$blend" ]]; then
-			[[ -n "$dlpath" ]] && blend="$dlpath"
-			act "trying to parse an unknown blend"
-			# Check if it's a Dockerfile
-			if grep -qi '^FROM ' "$blend"; then
-				act "The blend is a Dockerfile"
-				parsedfile="$($LIBPATH/extra/dockerfile_parse.py "$blend")"
-				[[ $? = 0 ]] || { die "Could not parse the Dockerfile" ; exit 1}
-				cat > "$R/$(basename ${blend}).blend" << __EOF__
-#!/usr/bin/env zsh
-# Parsed with dockerfile_parse.py
-#
-blend_postinst() {
-	fn blend_postinst
-	req=(strapdir blend)
-	ckreq || return 1
-
-	notice "executing blend postinst"
-	cat << ___EOF___ | sudo tee \$strapdir/blendpostinst >/dev/null
-${parsedfile}
-___EOF___
-
-	chroot-script -d blendpostinst || zerr
-}
-__EOF__
-				blendlib="$R/$(basename ${blend}).blend"
-			fi
-		fi
-	fi
 
 	[[ -f $blendlib ]] || { act "no blend specified" }
 	[[ -f $blendlib ]] && {
@@ -114,15 +76,15 @@ __EOF__
 
 	workdir="$R/tmp/${os}-${arch}-build"
 	strapdir="$workdir/bootstrap"
-	mkdir -p $strapdir
+	mkdir -p "$strapdir"
 
 	export LANG=C
 	export LC_ALL=C
 
-	source $R/lib/zuper/zuper.init
+	source "$R/lib/zuper/zuper.init"
 }
 
 TRAPZERR() { zerr; return $? }
 
-notice "vm-sdk loaded"
+notice "vm-sdk $vmsdk_version loaded"
 export PROMPT="%F{yellow}%(?..%? )%{$reset_color%}vmsdk@%{$fg[red]%}%m %{$reset_color%}%3c %# "

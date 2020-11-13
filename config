@@ -1,5 +1,6 @@
 #!/usr/bin/env zsh
-# Copyright (c) 2016-2017 Dyne.org Foundation
+# shellcheck=bash
+# Copyright (c) 2016-2020 Dyne.org Foundation
 # vm-sdk is written and maintained by Ivan J. <parazyd@dyne.org>
 #
 # This file is part of vm-sdk
@@ -17,27 +18,29 @@
 # You should have received a copy of the GNU General Public License
 # along with this source code. If not, see <http://www.gnu.org/licenses/>.
 
-
-## vm-sdk configuration
-## ---------------------
-
-arch=amd64
+arch="amd64"
 size=20479
-imageformat=qcow2
+imageformat="qcow2"
 #imageformat=raw
+
+parted_type="dos"
+dos_boot="ext4 2048s 264191s"
+dos_root="ext4 264192s 100%"
+bootfs="ext4"
+rootfs="ext4"
 
 PATH="$PATH:/usr/sbin:/sbin"
 
-## options for `make` when building kernel
-MAKEOPTS="-j$(expr $(grep -c 'processor' /proc/cpuinfo) + 1)"
+# Comment if you wish to disable stage4 archives for faster rebuilding
+CPIO_STAGE4=1
 
-## uncomment if you wish to create stage4 tarballs for faster rebuilding
-# TAR_STAGE4=true
+# Comment if you wish to disable image compression
+COMPRESS_IMAGE=1
 
-## Comment out if you don't want to create a cloud-based qcow.
-vars+=(makecloud)
-makecloud=true
+# extra_packages for all images
+extra_packages+=(fake-hwclock busybox-static ntp grub-pc)
 
-## extra_packages for all images
-extra_packages+=(fake-hwclock busybox-static ntp)
-extra_packages+=(fbterm)
+case "$arch" in
+i386)  extra_packages+=(linux-image-686) ;;
+amd64) extra_packages+=(linux-image-amd64) ;;
+esac
