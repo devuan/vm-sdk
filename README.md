@@ -8,7 +8,7 @@ and other virtual machines.
 
 vm-sdk is designed to be used interactively from a terminal.
 It requires the following packages to be installed in addition to the
-[dependencies required for libdevuansdk](https://github.com/dyne/libdevuansdk/blob/master/README.md#requirements).
+[dependencies required for libdevuansdk](https://github.com/parazyd/libdevuansdk/blob/master/README.md#requirements).
 
 `sudo` permissions are required for the user that is running the build.
 
