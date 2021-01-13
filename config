@@ -22,8 +22,8 @@ imageformat="qcow2"
 #imageformat=raw
 
 parted_type="dos"
-dos_boot="ext4 2048s 264191s"
-dos_root="ext4 264192s 100%"
+dos_boot="ext4 2048s 528382s"
+dos_root="ext4 528383s 100%"
 bootfs="ext4"
 rootfs="ext4"
 
