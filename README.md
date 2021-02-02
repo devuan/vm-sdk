@@ -16,7 +16,7 @@ It requires the following packages to be installed in addition to the
 
 ```
 qemu qemu-utils
-
+```
 
 ### Gentoo
 
